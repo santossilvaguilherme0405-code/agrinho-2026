@@ -3,55 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 | Agro Forte e Sustentável</title>
+    <title>Agrinho 2026 - Sustentabilidade</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="top-bar">
-        <button id="btn-som" title="Alternar Som">🔊 Som: ON</button>
-        <button id="btn-reset" title="Reiniciar Site">🔄 Reiniciar</button>
-    </div>
-
     <header>
         <nav>
             <h1 class="logo">AGRINHO<span>2026</span></h1>
-            <ul class="menu-navegacao">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#simulador">Simulador</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-            </ul>
         </nav>
     </header>
 
     <main>
         <section id="inicio" class="hero">
-            <div class="container-texto">
-                <h2>Agro forte, futuro sustentável</h2>
-                <p>Equilíbrio entre produção e meio ambiente</p>
-            </div>
+            <h2>Agro forte, futuro sustentável</h2>
+            <p>Equilíbrio entre produção e meio ambiente</p>
         </section>
 
-        <section id="simulador" class="interativo">
-            <h3>Painel de Equilíbrio Ambiental</h3>
-            <p>Ajuste os níveis e veja o impacto no futuro:</p>
-            
-            <div class="controles-simulador">
-                <label for="nivel_producao">Nível de Produção: <span id="val_producao">50</span>%</label>
+        <section id="simulador">
+            <h3>Simulador de Impacto Ambiental</h3>
+            <div class="controle">
+                <label>Produção: <span id="val_producao">50</span>%</label>
                 <input type="range" id="nivel_producao" min="0" max="100" value="50">
-                
-                <label for="nivel_preservacao">Nível de Preservação: <span id="val_preservacao">50</span>%</label>
-                <input type="range" id="nivel_preservacao" min="0" max="100" value="50">
             </div>
-
             <div id="resultado-status" class="status-box">
-                Aguardando interação...
+                Mova o controle para ver o equilíbrio.
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Desenvolvido por [Seu Nome] - Projeto Autoral Agrinho 2026</p>
+        <p>&copy; 2026 Projeto Agrinho - Autoral</p>
     </footer>
 
     <script src="script.js"></script>
