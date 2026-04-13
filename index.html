@@ -3,77 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 | Sustentabilidade</title>
+    <title>Agrinho 2026 | Agro Forte e Sustentável</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+    <div id="top-bar">
+        <button id="btn-som" title="Alternar Som">🔊 Som: ON</button>
+        <button id="btn-reset" title="Reiniciar Site">🔄 Reiniciar</button>
+    </div>
+
     <header>
         <nav>
-            <div class="logo">Agrinho <span>2026</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#links">Recursos</a></li>
+            <h1 class="logo">AGRINHO<span>2026</span></h1>
+            <ul class="menu-navegacao">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#simulador">Simulador</a></li>
+                <li><a href="#sobre">Sobre</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <span class="badge">Inovação no Campo</span>
-            <h1>Agro forte, futuro sustentável</h1>
-            <p>"Equilíbrio entre produção e meio ambiente"</p>
-            <div class="hero-btns">
-                <button id="btnSaibaMais" class="btn-primary">Conhecer Projeto</button>
-                <a href="https://www.sistemafaep.org.br/agrinho/" target="_blank" class="btn-secondary">Portal Oficial</a>
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container-texto">
+                <h2>Agro forte, futuro sustentável</h2>
+                <p>Equilíbrio entre produção e meio ambiente</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projetos" class="section">
-        <h2>Nossos Pilares</h2>
-        <div class="grid-container">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=400&q=80" alt="Plantação jovem">
-                <h3>Educação Ambiental</h3>
-                <p>Capacitando jovens para entenderem a importância da preservação aliada à tecnologia.</p>
+        <section id="simulador" class="interativo">
+            <h3>Painel de Equilíbrio Ambiental</h3>
+            <p>Ajuste os níveis e veja o impacto no futuro:</p>
+            
+            <div class="controles-simulador">
+                <label for="nivel_producao">Nível de Produção: <span id="val_producao">50</span>%</label>
+                <input type="range" id="nivel_producao" min="0" max="100" value="50">
+                
+                <label for="nivel_preservacao">Nível de Preservação: <span id="val_preservacao">50</span>%</label>
+                <input type="range" id="nivel_preservacao" min="0" max="100" value="50">
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=400&q=80" alt="Tecnologia no campo">
-                <h3>Agrotech</h3>
-                <p>O uso de drones e sensores para otimizar o uso da água e reduzir desperdícios.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=400&q=80" alt="Biodiversidade">
-                <h3>Biodiversidade</h3>
-                <p>Técnicas de plantio que respeitam a fauna e flora local, garantindo o equilíbrio.</p>
-            </div>
-        </div>
-    </section>
 
-    <section id="links" class="links-section">
-        <h2>Links Úteis e Parceiros</h2>
-        <p>Acesse fontes oficiais para aprofundar seu conhecimento:</p>
-        <div class="btn-group">
-            <a href="https://www.embrapa.br" target="_blank" class="external-link">
-                <i class="fas fa-seedling"></i> Embrapa
-            </a>
-            <a href="https://www.gov.br/agricultura/pt-br" target="_blank" class="external-link">
-                <i class="fas fa-landmark"></i> Ministério da Agricultura
-            </a>
-            <a href="https://www.cnabrasil.org.br" target="_blank" class="external-link">
-                <i class="fas fa-tractor"></i> CNA Brasil
-            </a>
-        </div>
-    </section>
+            <div id="resultado-status" class="status-box">
+                Aguardando interação...
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>Desenvolvido para o Concurso Agrinho 2026</p>
-        <div class="social">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-facebook"></i>
-        </div>
+        <p>Desenvolvido por [Seu Nome] - Projeto Autoral Agrinho 2026</p>
     </footer>
 
     <script src="script.js"></script>
