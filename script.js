@@ -3,7 +3,7 @@
  * Responsável por: Simulação, Tema e Quiz.
  */
 
-// 1. Definição de Variáveis e Seleção de Elementos
+// 1. Seleção de Elementos com Verificação
 const inTech = document.getElementById('input-tech');
 const inMata = document.getElementById('input-mata');
 const txtTech = document.getElementById('txt-tech');
@@ -12,40 +12,55 @@ const statusBox = document.getElementById('status-agro');
 const btnReset = document.getElementById('btn-reset');
 const btnTema = document.getElementById('btn-theme');
 
-// 2. Função de Simulação (Uso de Operadores Lógicos)
+// 2. Função de Simulação (Melhorada)
 function atualizarSimulacao() {
+    // Verificamos se os elementos existem para evitar erros no console
+    if (!inTech || !inMata || !statusBox) return;
+
     const valorTech = Number(inTech.value);
     const valorMata = Number(inMata.value);
 
-    // Atualiza o texto na interface
-    txtTech.innerText = valorTech;
-    txtMata.innerText = valorMata;
+    if (txtTech) txtTech.innerText = valorTech;
+    if (txtMata) txtMata.innerText = valorMata;
 
-    // Lógica de Equilíbrio
     if (valorTech > 80 && valorMata < 30) {
         statusBox.innerText = "ALERTA: Produção insustentável. Risco ambiental alto!";
-        statusBox.style.backgroundColor = "#e74c3c";
+        statusBox.style.background = "#e74c3c";
         statusBox.style.color = "white";
     } else if (valorTech >= 50 && valorMata >= 50) {
         statusBox.innerText = "EQUILÍBRIO: Você atingiu a meta de Agro Sustentável!";
-        statusBox.style.backgroundColor = "#27ae60";
+        statusBox.style.background = "#27ae60";
         statusBox.style.color = "white";
     } else {
         statusBox.innerText = "Ajuste os controles para melhorar o desempenho.";
-        statusBox.style.backgroundColor = "#f1c40f";
+        statusBox.style.background = "#f1c40f";
         statusBox.style.color = "#333";
     }
 }
 
-// 3. Laço de Repetição (Fundamentos da Computação)
-// Adiciona o evento de input em todos os sliders da lista
+// 3. Eventos dos Sliders
 [inTech, inMata].forEach(slider => {
-    slider.addEventListener('input', atualizarSimulacao);
+    if (slider) slider.addEventListener('input', atualizarSimulacao);
 });
 
-// 4. Recurso Extra: Alternar Tema
-btnTema.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    btnTema.innerText = isDark ? "☀️ Modo Claro" : "🌓 Modo Escuro";
-});
+// 4. Recurso Extra: Alternar Tema (DARK MODE)
+if (btnTema) {
+    btnTema.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        btnTema.innerText = isDark ? "☀️ Modo Claro" : "🌓 Modo Escuro";
+    });
+}
+
+// 5. Função do Botão Reiniciar (Faltava isso!)
+if (btnReset) {
+    btnReset.addEventListener('click', () => {
+        inTech.value = 50;
+        inMata.value = 50;
+        atualizarSimulacao();
+        console.log("Sistema reiniciado pelo usuário.");
+    });
+}
+
+// Inicia a lógica assim que a página carrega
+window.onload = atualizarSimulacao;
