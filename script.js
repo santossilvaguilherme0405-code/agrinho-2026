@@ -1,57 +1,54 @@
-/**
- * PROJETO AGRINHO 2026
- * Autor: [Seu Nome]
- * Funcionalidade: Lógica de equilíbrio e controle de estado
- */
+// 1. Variáveis Significativas
+const btnTema = document.getElementById('btn-theme');
+const inTech = document.getElementById('input-tech');
+const inMata = document.getElementById('input-mata');
+const statusAgro = document.getElementById('status-agro');
 
-// 1. Variáveis e Constantes Claras (Nomenclatura Significativa)
-const inputProducao = document.getElementById('nivel_producao');
-const inputPreservacao = document.getElementById('nivel_preservacao');
-const displayStatus = document.getElementById('resultado-status');
-const btnReset = document.getElementById('btn-reset');
+// 2. Função de Modo Escuro (Recurso Extra)
+btnTema.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    btnTema.innerText = isDark ? "☀️ Modo Claro" : "🌓 Modo Escuro";
+});
 
-// 2. Transmissão de Mensagens / Funções de Atualização
-function calcularEquilibrio() {
-    const pld = Number(inputProducao.value); // Valor da produção
-    const pre = Number(inputPreservacao.value); // Valor da preservação
+// 3. Lógica de Equilíbrio (Operadores Lógicos)
+function atualizarPainel() {
+    const tech = Number(inTech.value);
+    const mata = Number(inMata.value);
     
-    // Atualiza os textos na tela
-    document.getElementById('val_producao').innerText = pld;
-    document.getElementById('val_preservacao').innerText = pre;
+    document.getElementById('txt-tech').innerText = tech;
+    document.getElementById('txt-mata').innerText = mata;
 
-    // 3. Operadores Lógicos para determinar o nível
-    let mensagem = "";
-    let corFundo = "";
-
-    if (pld > 80 && pre < 30) {
-        mensagem = "ALERTA: Produção insustentável. Risco de esgotamento de recursos!";
-        corFundo = "#ff4444";
-    } else if (pld >= 50 && pre >= 50) {
-        mensagem = "EQUILÍBRIO PERFEITO: Agro forte e natureza protegida.";
-        corFundo = "#8bc34a";
+    if (tech > 70 && mata < 40) {
+        statusAgro.innerText = "CUIDADO: Alta produção com baixa preservação gera desequilíbrio!";
+        statusAgro.style.color = "#e74c3c";
+    } else if (tech >= 50 && mata >= 50) {
+        statusAgro.innerText = "SUCESSO: Você atingiu o Agro Sustentável!";
+        statusAgro.style.color = "#2ecc71";
     } else {
-        mensagem = "EM ANÁLISE: Continue ajustando para encontrar o ponto ideal.";
-        corFundo = "#ffbb33";
+        statusAgro.innerText = "Continue ajustando para encontrar o equilíbrio.";
+        statusAgro.style.color = "var(--texto)";
     }
-
-    displayStatus.innerText = mensagem;
-    displayStatus.style.backgroundColor = corFundo;
 }
 
-// 4. Laço de Repetição para Eventos (Evitando blocos repetitivos)
-[inputProducao, inputPreservacao].forEach(input => {
-    input.addEventListener('input', calcularEquilibrio);
+// 4. Laço de Repetição para Ouvintes de Evento (Eficiência)
+[inTech, inMata].forEach(item => {
+    item.addEventListener('input', atualizarPainel);
 });
 
-// 5. Recursos Extras (Botão de Reiniciar)
-btnReset.addEventListener('click', () => {
-    inputProducao.value = 50;
-    inputPreservacao.value = 50;
-    calcularEquilibrio();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+// 5. Função do Quiz (Interatividade)
+function responderQuiz(correto) {
+    const res = document.getElementById('res-quiz');
+    if (correto) {
+        res.innerText = "✅ Correto! O plantio direto evita a erosão.";
+        res.style.color = "#2ecc71";
+    } else {
+        res.innerText = "❌ Tente novamente! A preservação do solo é a chave.";
+        res.style.color = "#e74c3c";
+    }
+}
 
-// Inicialização com tempo agradável
-window.onload = () => {
-    setTimeout(calcularEquilibrio, 500); 
-};
+// Botão Ver Mais (Simulação de carregamento)
+document.getElementById('btn-foto-mais').addEventListener('click', () => {
+    alert("Carregando mais inovações do Agrinho 2026...");
+});
