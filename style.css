@@ -1,61 +1,49 @@
+/* Variáveis para fácil manutenção (Fundamentos) */
 :root {
-    --verde-primario: #2d5a27;
-    --verde-claro: #8bc34a;
-    --bege-fundo: #fdfaf6;
-    --transicao-suave: all 0.4s ease-in-out;
+    --bg: #f4f9f4;
+    --texto: #222;
+    --primaria: #2d5a27;
+    --destaque: #8bc34a;
 }
 
-body {
-    background-color: var(--bege-fundo);
-    font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden;
+/* Classe de Modo Escuro */
+.dark-mode {
+    --bg: #1a1a1a;
+    --texto: #f4f4f4;
+    --primaria: #8bc34a;
 }
 
-/* Identidade Visual Própria */
-.logo {
-    font-size: 2rem;
-    letter-spacing: -1px;
-}
+body { background: var(--bg); color: var(--texto); transition: 0.3s; }
 
-.logo span {
-    color: var(--verde-claro);
-    font-weight: 300;
-}
-
-/* Layout Harmonioso */
-.hero {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(45,90,39,0.8), rgba(139,195,74,0.5)), 
-                url('sua-imagem-autoral.jpg'); /* Substitua por arte própria */
-    color: white;
+.section-card {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
 }
 
-/* Simulador Interativo */
-.status-box {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 15px;
-    font-weight: bold;
-    transition: var(--transicao-suave);
+.grid-imagens {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-/* Recurso Extra: Barra de utilitários */
-#top-bar {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 2000;
+.item-foto img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    border: 3px solid var(--destaque);
 }
 
-button {
-    cursor: pointer;
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: none;
-    background: var(--verde-primario);
+.btn-acao {
+    background: var(--primaria);
     color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
