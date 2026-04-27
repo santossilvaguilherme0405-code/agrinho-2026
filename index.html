@@ -1,61 +1,82 @@
-<div id="top-bar">
-    <button id="btn-theme">🌓 Alternar Tema</button>
-    <button id="btn-reset">🔄 Reiniciar</button>
-</div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 | Agro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<header>
-    <nav>
-        <h1 class="logo">AGRINHO<span>2026</span></h1>
-        <ul class="menu">
-            <li><a href="#simulador">Simulador</a></li>
-            <li><a href="#galeria">Inovações</a></li>
-            <li><a href="#quiz">Desafio Agro</a></li>
-        </ul>
-    </nav>
-</header>
+    <div id="top-bar">
+        <button id="btn-theme">🌓 Alternar Tema</button>
+        <button id="btn-reset">🔄 Reiniciar</button>
+    </div>
 
-<main>
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Agro Forte, Futuro Sustentável</h2>
-            <p>"Equilíbrio entre produção e meio ambiente"</p>
-        </div>
-    </section>
+    <header>
+        <nav>
+            <h1 class="logo">AGRINHO<span>2026</span></h1>
+            <ul class="menu">
+                <li><a href="#simulador">Simulador</a></li>
+                <li><a href="#galeria">Inovações</a></li>
+                <li><a href="#quiz">Desafio</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="simulador" class="section-card">
-        <h3>Painel de Gestão</h3>
-        <div class="controles">
-            <label>Uso de Tecnologia: <span id="txt-tech">50</span>%</label>
-            <input type="range" id="input-tech" min="0" max="100" value="50">
-            
-            <label>Preservação de Matas: <span id="txt-mata">50</span>%</label>
-            <input type="range" id="input-mata" min="0" max="100" value="50">
-        </div>
-        <div id="status-agro" class="feedback">Ajuste os dados para analisar o impacto.</div>
-    </section>
-
-    <section id="galeria" class="section-card">
-        <h3>Tecnologias no Campo</h3>
-        <div class="grid-imagens">
-            <div class="item-foto">
-                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=400&q=80" alt="Drones no campo">
-                <p>Drones para Monitoramento</p>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Agro Forte, Futuro Sustentável</h2>
+                <p>"Equilíbrio entre produção e meio ambiente"</p>
             </div>
-            <div class="item-foto">
-                <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=400&q=80" alt="Horta vertical">
-                <p>Hidroponia Sustentável</p>
-            </div>
-        </div>
-        <button id="btn-foto-mais" class="btn-acao">Ver Mais Tecnologias</button>
-    </section>
+        </section>
 
-    <section id="quiz" class="section-card">
-        <h3>Desafio Sustentável</h3>
-        <p id="pergunta-quiz">O que é plantio direto?</p>
-        <div class="botoes-quiz">
-            <button onclick="responderQuiz(true)">Técnica que preserva o solo</button>
-            <button onclick="responderQuiz(false)">Plantar sem usar água</button>
-        </div>
-        <p id="res-quiz"></p>
-    </section>
-</main>
+        <section id="simulador" class="section-card">
+            <h3>Painel de Gestão Ambiental</h3>
+            <div class="controles">
+                <div class="controle-item">
+                    <label>Uso de Tecnologia: <span id="txt-tech">50</span>%</label>
+                    <input type="range" id="input-tech" min="0" max="100" value="50">
+                </div>
+                
+                <div class="controle-item">
+                    <label>Preservação de Matas: <span id="txt-mata">50</span>%</label>
+                    <input type="range" id="input-mata" min="0" max="100" value="50">
+                </div>
+            </div>
+            <div id="status-agro" class="feedback">Ajuste os níveis para analisar o impacto.</div>
+        </section>
+
+        <section id="galeria" class="section-card">
+            <h3>Tecnologia no Campo</h3>
+            <div class="grid-imagens">
+                <figure class="item-foto">
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=400&q=80" alt="Drones">
+                    <figcaption>Monitoramento por Drone</figcaption>
+                </figure>
+                <figure class="item-foto">
+                    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=400&q=80" alt="Horta">
+                    <figcaption>Hidroponia Inteligente</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="quiz" class="section-card">
+            <h3>Desafio Agro</h3>
+            <p>O plantio direto ajuda a evitar a erosão do solo?</p>
+            <div class="botoes-quiz">
+                <button class="btn-quiz" onclick="responderQuiz(true)">Sim, com certeza!</button>
+                <button class="btn-quiz" onclick="responderQuiz(false)">Não, não interfere.</button>
+            </div>
+            <p id="res-quiz"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Projeto Estudantil Agrinho - Autoral</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
