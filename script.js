@@ -1,66 +1,64 @@
-/**
- * LÓGICA AGRINHO 2026
- * Responsável por: Simulação, Tema e Quiz.
- */
+const baseConhecimento = [
+    { p: "📉 Baixa Produtividade", s: "Use drones para mapear falhas de nutrientes e aplicar fertilizantes apenas onde é necessário." },
+    { p: "💧 Desperdício de Água", s: "Implemente sensores de humidade no solo conectados ao telemóvel para irrigar com precisão." },
+    { p: "🦗 Ataque de Pragas", s: "A hidroponia e estufas inteligentes protegem as plantas de pragas externas sem usar venenos." },
+    { p: "☀️ Falta de Energia", s: "Instale painéis solares para alimentar as bombas de água e reduzir custos fixos." }
+];
 
-// 1. Seleção de Elementos com Verificação
-const inTech = document.getElementById('input-tech');
-const inMata = document.getElementById('input-mata');
-const txtTech = document.getElementById('txt-tech');
-const txtMata = document.getElementById('txt-mata');
-const statusBox = document.getElementById('status-agro');
-const btnReset = document.getElementById('btn-reset');
-const btnTema = document.getElementById('btn-theme');
+// Iniciar Central de Dúvidas
+function iniciarSuporte() {
+    const container = document.getElementById('lista-problemas');
+    if (!container) return;
+    baseConhecimento.forEach(item => {
+        const btn = document.createElement('button');
+        btn.innerText = item.p;
+        btn.className = 'btn-problema';
+        btn.onclick = () => {
+            document.getElementById('texto-resposta').innerHTML = `<strong>💡 Solução Técnica:</strong> ${item.s}`;
+        };
+        container.appendChild(btn);
+    });
+}
 
-// 2. Função de Simulação (Melhorada)
-function atualizarSimulacao() {
-    // Verificamos se os elementos existem para evitar erros no console
-    if (!inTech || !inMata || !statusBox) return;
+// Opção de Zoom
+let zoomAtual = 1.0;
+function alterarZoom(fator) {
+    zoomAtual *= fator;
+    if (zoomAtual < 0.7) zoomAtual = 0.7;
+    if (zoomAtual > 1.4) zoomAtual = 1.4;
+    document.body.style.zoom = zoomAtual;
+}
 
-    const valorTech = Number(inTech.value);
-    const valorMata = Number(inMata.value);
-
-    if (txtTech) txtTech.innerText = valorTech;
-    if (txtMata) txtMata.innerText = valorMata;
-
-    if (valorTech > 80 && valorMata < 30) {
-        statusBox.innerText = "ALERTA: Produção insustentável. Risco ambiental alto!";
-        statusBox.style.background = "#e74c3c";
-        statusBox.style.color = "white";
-    } else if (valorTech >= 50 && valorMata >= 50) {
-        statusBox.innerText = "EQUILÍBRIO: Você atingiu a meta de Agro Sustentável!";
-        statusBox.style.background = "#27ae60";
-        statusBox.style.color = "white";
+// Adicionar Foto da Comunidade
+function adicionarFoto() {
+    const input = document.getElementById('input-foto');
+    const galeria = document.getElementById('galeria-usuario');
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const figure = document.createElement('figure');
+            figure.className = 'item-foto';
+            figure.innerHTML = `
+                <img src="${e.target.result}" alt="Foto do Usuário">
+                <figcaption>Enviada por Usuário</figcaption>
+            `;
+            galeria.prepend(figure);
+        };
+        reader.readAsDataURL(input.files[0]);
     } else {
-        statusBox.innerText = "Ajuste os controles para melhorar o desempenho.";
-        statusBox.style.background = "#f1c40f";
-        statusBox.style.color = "#333";
+        alert("Por favor, selecione uma imagem primeiro!");
     }
 }
 
-// 3. Eventos dos Sliders
-[inTech, inMata].forEach(slider => {
-    if (slider) slider.addEventListener('input', atualizarSimulacao);
-});
+// Alternar Tema
+document.getElementById('btn-theme').onclick = () => {
+    document.body.classList.toggle('dark-mode');
+};
 
-// 4. Recurso Extra: Alternar Tema (DARK MODE)
-if (btnTema) {
-    btnTema.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        btnTema.innerText = isDark ? "☀️ Modo Claro" : "🌓 Modo Escuro";
-    });
-}
+// Reiniciar
+document.getElementById('btn-reset').onclick = () => {
+    location.reload();
+};
 
-// 5. Função do Botão Reiniciar (Faltava isso!)
-if (btnReset) {
-    btnReset.addEventListener('click', () => {
-        inTech.value = 50;
-        inMata.value = 50;
-        atualizarSimulacao();
-        console.log("Sistema reiniciado pelo usuário.");
-    });
-}
-
-// Inicia a lógica assim que a página carrega
-window.onload = atualizarSimulacao;
+window.onload = iniciarSuporte;
