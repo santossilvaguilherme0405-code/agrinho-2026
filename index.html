@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 | Agro Forte e Sustentável</title>
+    <title>Agrinho 2026 | Agro Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="top-bar">
-        <button id="btn-theme" title="Alternar entre claro e escuro">🌓 Alternar Tema</button>
-        <button id="btn-reset" title="Reiniciar todas as interações">🔄 Reiniciar</button>
+        <button onclick="alterarZoom(1.1)" class="btn-topo">A+</button>
+        <button onclick="alterarZoom(0.9)" class="btn-topo">A-</button>
+        <button id="btn-theme" class="btn-topo">🌓 Alternar Tema</button>
+        <button id="btn-reset" class="btn-topo">🔄 Reiniciar</button>
     </div>
 
     <header>
         <nav>
             <h1 class="logo">AGRINHO<span>2026</span></h1>
-            <ul class="menu-navegacao">
-                <li><a href="#simulador">Simulador</a></li>
-                <li><a href="#galeria">Inovações</a></li>
-                <li><a href="#quiz">Desafio</a></li>
+            <ul class="menu">
+                <li><a href="#suporte">Suporte</a></li>
+                <li><a href="#galeria">Tecnologias</a></li>
+                <li><a href="#comunidade">Comunidade</a></li>
             </ul>
         </nav>
     </header>
@@ -27,59 +29,48 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h2>Agro forte, futuro sustentável</h2>
-                <p>"Equilíbrio entre produção e meio ambiente"</p>
+                <h2>Agro Forte, Futuro Sustentável</h2>
+                <p>Tecnologia a serviço da natureza.</p>
             </div>
         </section>
 
-        <section id="simulador" class="section-card">
-            <h3>Painel de Gestão Sustentável</h3>
-            <p>Mova os controles para encontrar o equilíbrio ideal:</p>
-            
-            <div class="controles-simulador">
-                <div class="controle-item">
-                    <label for="input-tech">Uso de Tecnologia: <span id="txt-tech">50</span>%</label>
-                    <input type="range" id="input-tech" min="0" max="100" value="50">
-                </div>
-                
-                <div class="controle-item">
-                    <label for="input-mata">Preservação de Matas: <span id="txt-mata">50</span>%</label>
-                    <input type="range" id="input-mata" min="0" max="100" value="50">
-                </div>
+        <section id="suporte" class="section-card">
+            <h3>🌱 Central de Inteligência Agrinho</h3>
+            <p>Clique nas categorias abaixo para resolver desafios no campo:</p>
+            <div id="lista-problemas" class="grid-botoes"></div>
+            <div id="painel-resposta" class="resposta-box">
+                <p id="texto-resposta">Aguardando seleção...</p>
             </div>
+        </section>
 
-            <div id="status-agro" class="status-box">
-                Aguardando análise dos dados...
+        <section id="comunidade" class="section-card">
+            <h3>📸 Partilhe a sua Tecnologia</h3>
+            <p>Adicione uma foto de uma inovação que encontrou no campo:</p>
+            <div class="upload-area">
+                <input type="file" id="input-foto" accept="image/*">
+                <button class="btn-problema" onclick="adicionarFoto()">Publicar Foto</button>
             </div>
+            <div id="galeria-usuario" class="grid-imagens" style="margin-top: 20px;">
+                </div>
         </section>
 
         <section id="galeria" class="section-card">
-            <h3>Tecnologias do Futuro</h3>
+            <h3>Tecnologias de Referência</h3>
             <div class="grid-imagens">
                 <figure class="item-foto">
-                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=500&q=80" alt="Monitoramento por drones">
+                    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=400" alt="Drone">
                     <figcaption>Drones de Precisão</figcaption>
                 </figure>
                 <figure class="item-foto">
-                    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=80" alt="Irrigação inteligente">
-                    <figcaption>Gestão Hídrica</figcaption>
+                    <img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=400" alt="Hidroponia">
+                    <figcaption>Hidroponia</figcaption>
                 </figure>
             </div>
-        </section>
-
-        <section id="quiz" class="section-card">
-            <h3>Desafio de Conhecimento</h3>
-            <p>O equilíbrio entre produção e preservação é possível?</p>
-            <div class="botoes-quiz">
-                <button onclick="responderQuiz(true)">Sim, com tecnologia e respeito!</button>
-                <button onclick="responderQuiz(false)">Não, um sempre exclui o outro.</button>
-            </div>
-            <p id="res-quiz"></p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Agrinho - Projeto de Autoria Estudantil</p>
+        <p>&copy; 2026 - Projeto Agrinho</p>
     </footer>
 
     <script src="script.js"></script>
